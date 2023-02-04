@@ -1,29 +1,18 @@
-import { useState } from 'react';
 import PropTypes from 'prop-types';
 
+import useForm from 'shared/hooks/useForm';
 import Button from 'shared/Button/Button';
 import LabelInput from 'shared/LabelInput/LabelInput';
+
 import styles from './ContactFofm.module.css';
 
+import initialState from './initialState';
+
 const ContactForm = ({ onSubmit }) => {
-  const [state, setState] = useState({
-    name: '',
-    number: '',
+  const { state, setState, handleChange, handleSubmit } = useForm({
+    initialState,
+    onSubmit,
   });
-
-  const handleChange = ({ target }) => {
-    const { name, value } = target;
-
-    setState(prevState => {
-      return { ...prevState, [name]: value };
-    });
-  };
-
-  const handleSubmit = e => {
-    e.preventDefault();
-    onSubmit({ name, number });
-    setState({ name: '', number: '' });
-  };
 
   const { name, number } = state;
 
