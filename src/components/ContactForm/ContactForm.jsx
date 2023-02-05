@@ -9,7 +9,7 @@ import styles from './ContactFofm.module.css';
 import initialState from './initialState';
 
 const ContactForm = ({ onSubmit }) => {
-  const { state, setState, handleChange, handleSubmit } = useForm({
+  const { state, handleChange, handleSubmit } = useForm({
     initialState,
     onSubmit,
   });
